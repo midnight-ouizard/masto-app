@@ -1,0 +1,32 @@
+{
+  "private": true,
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "lint": "turbo run lint",
+    "format": "turbo run format",
+    "package": "turbo run package"
+  },
+  "devDependencies": {
+    "@turbo/gen": "^1.9.7",
+    "autoprefixer": "^10.4.14",
+    "eslint": "^7.32.0",
+    "postcss": "^8.4.27",
+    "prettier": "^2.5.1",
+    "tailwindcss": "^3.3.3",
+    "turbo": "^1.10.15"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "packageManager": "pnpm@8.6.10",
+  "name": "monorepo-template",
+  "pnpm": {
+		"overrides": {
+			"get-func-name@<2.0.1": ">=2.0.1",
+			"postcss@<8.4.31": ">=8.4.31",
+			"@babel/traverse@<7.23.2": ">=7.23.2",
+			"undici@<5.26.2": ">=5.26.2"
+		}
+	}
+}

@@ -1,0 +1,10 @@
+{
+	"compilerOptions": {
+		"outDir": ".build",
+		"noEmit": false,
+		"esModuleInterop": true,
+		"allowSyntheticDefaultImports": true,
+		"allowJs": true
+	},
+	"exclude": [".turbo", ".build"]
+}
