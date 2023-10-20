@@ -1,11 +1,9 @@
 <script>
 	import '../app.css';
-	import { fade } from 'svelte/transition';
+	import { ViewTransition } from '@mouizard/svelte';
 	export let data;
 </script>
 
-{#key data.url}
-	<div in:fade={{ duration: 300, delay: 400 }} out:fade={{ duration: 300 }}>
-		<slot />
-	</div>
-{/key}
+<ViewTransition url={data?.url}>
+	<slot />
+</ViewTransition>
