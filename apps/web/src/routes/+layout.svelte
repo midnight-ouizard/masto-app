@@ -4,6 +4,6 @@
 	export let data;
 </script>
 
-<!-- <ViewTransition url={data?.url}> -->
-<slot />
-<!-- </ViewTransition> -->
+<ViewTransition url={data?.url}>
+	<slot />
+</ViewTransition>
