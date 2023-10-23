@@ -1,4 +1,4 @@
-import { saveCredentialCookies } from '$lib/mastodon/app/credentials.js';
+import { getCredentials, saveCredential } from '$lib/mastodon/app/credentials.js';
 import { redirectToAuth } from '$lib/mastodon/auth/redirect_to_auth';
 import { createMastodonApp } from '$lib/mastodon/index.js';
 import { redirect } from '@sveltejs/kit';
@@ -11,7 +11,7 @@ export const actions = {
 			return;
 		}
 
-		let credentials;
+		let credentials = getCredentials(cookies);
 
 		if (!credentials) {
 			const respCredentials = await createMastodonApp(server);
@@ -19,13 +19,11 @@ export const actions = {
 				return;
 			}
 			credentials = respCredentials;
-			console.log({ respCredentials });
-			saveCredentialCookies(credentials, cookies);
+			saveCredential(credentials, cookies);
 		}
 
 		credentials;
 		const authURL = redirectToAuth(credentials, server);
-		console.log({ loginActionRedirectTo: authURL });
 		throw redirect(301, authURL);
 	}
 };

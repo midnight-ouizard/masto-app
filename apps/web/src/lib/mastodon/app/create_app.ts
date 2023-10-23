@@ -30,18 +30,19 @@ export async function createMastodonApp(server: string): Promise<Credentials | u
 	};
 }
 export async function createMastodonAppOld(server: string): Promise<Credentials | undefined> {
+	const serverURL = createServerURL(server);
 	const input: CreateMastodonAppInput = {
 		client_name: 'Mastodon',
 		redirect_uris: APP_SERVER_LOGIN,
 		scopes: SCOPES,
-		website: ''
+		website: serverURL.href
 	};
 
-	const serverURL = createServerURL(server);
 	const createAppURL = new URL(serverURL.href + '/api/v1/apps');
 
 	const response = await fetch(createAppURL, {
 		method: 'POST',
+		// TODO cambiar a form data
 		headers: {
 			'Content-Type': 'application/json'
 		},

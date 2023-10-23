@@ -1,22 +1,16 @@
-import { getCredentialsCookies } from '$lib/mastodon/app/credentials.js';
-import { getOathCodeCookies } from '$lib/mastodon/auth/oath_code.js';
-import { redirect } from '@sveltejs/kit';
-import { createRestAPIClient } from 'masto';
+import { createMastoClientFromCookies } from '$lib/mastodon/client/index.js';
+import { error } from '@sveltejs/kit';
 
 export const load = async ({ cookies }) => {
-	const oathToken = getOathCodeCookies(cookies);
-	const credentials = getCredentialsCookies(cookies);
+	const masto = createMastoClientFromCookies(cookies);
 
-	if (!oathToken || !credentials?.serverURL) {
-		console.log('redirect login desde /', { oathToken, credentials });
-		throw redirect(303, '/login');
+	const statuses = await masto.v1.timelines.home.list({ limit: 40 });
+
+	if (!statuses) {
+		throw error(500, 'Error buscando status');
 	}
 
-	const masto = createRestAPIClient({
-		accessToken: oathToken,
-		url: credentials.serverURL
-	});
-
-	const status = await masto.v1.timelines.home.list({ limit: 40 });
-	return { status };
+	return {
+		statuses
+	};
 };
