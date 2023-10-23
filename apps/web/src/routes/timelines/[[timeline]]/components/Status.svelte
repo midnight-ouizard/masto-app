@@ -7,6 +7,6 @@
 <div class="card">
 	<h2 class="card-title">{status.account.acct}</h2>
 	ignore this
-	<!-- svelte-ignore svelte/no-at-html-tags -->
+	<!-- eslint-disable svelte/no-at-html-tags -->
 	{@html status.content}
 </div>

@@ -14,7 +14,7 @@
     "postcss": "^8.4.27",
     "prettier": "^2.5.1",
     "tailwindcss": "^3.3.3",
-    "turbo": "^1.10.15"
+    "turbo": "^1.10.16"
   },
   "engines": {
     "node": ">=16.0.0"
@@ -22,11 +22,11 @@
   "packageManager": "pnpm@8.6.10",
   "name": "fante",
   "pnpm": {
-		"overrides": {
-			"get-func-name@<2.0.1": ">=2.0.1",
-			"postcss@<8.4.31": ">=8.4.31",
-			"@babel/traverse@<7.23.2": ">=7.23.2",
-			"undici@<5.26.2": ">=5.26.2"
-		}
-	}
+    "overrides": {
+      "get-func-name@<2.0.1": ">=2.0.1",
+      "postcss@<8.4.31": ">=8.4.31",
+      "@babel/traverse@<7.23.2": ">=7.23.2",
+      "undici@<5.26.2": ">=5.26.2"
+    }
+  }
 }
