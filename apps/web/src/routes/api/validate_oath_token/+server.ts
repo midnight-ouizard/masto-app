@@ -19,5 +19,5 @@ export const GET = async ({ request, cookies }) => {
 	}
 
 	saveOathToken(oathToken, cookies);
-	throw redirect(301, '/timelines/home');
+	throw redirect(301, '/');
 };

@@ -1,5 +1,5 @@
 <script>
-	import Status from './components/Status.svelte';
+	import Status from '$lib/components/Status/Status.svelte';
 
 	export let data;
 	$: statuses = data?.statuses;
