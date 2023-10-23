@@ -1,5 +1,5 @@
 <script>
-	import LoginForm from '../components/LoginForm.svelte';
+	import LoginForm from './components/LoginForm.svelte';
 </script>
 
 <div class="mx-auto max-w-md space-y-6 flex flex-col h-screen px-8 mt-[15vh]">
