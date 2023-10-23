@@ -8,6 +8,7 @@ export function createMastoClientFromCookies(cookies: Cookies): Client {
 	const authCredentials = getAuthCredentials(cookies);
 
 	if (!authCredentials?.oathToken || !authCredentials?.url) {
+		console.log('Redirect a /login desde createMastoClientFromCookies');
 		throw redirect(303, '/login');
 	}
 	const masto = createRestAPIClient({

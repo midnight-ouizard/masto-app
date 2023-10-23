@@ -1,6 +1,6 @@
 import { APP_SERVER_LOGIN, CLIENT_APP_NAME, SCOPES } from '../consts';
 import { createServerURL } from '../server';
-import type { AppResponse, Credentials } from './types';
+import type { Credentials } from './types';
 import { createRestAPIClient } from 'masto';
 export interface CreateMastodonAppInput {
 	client_name: string;
@@ -27,37 +27,5 @@ export async function createMastodonApp(server: string): Promise<Credentials | u
 		clientId: app.clientId,
 		clientSecret: app.clientSecret,
 		serverURL: url
-	};
-}
-export async function createMastodonAppOld(server: string): Promise<Credentials | undefined> {
-	const serverURL = createServerURL(server);
-	const input: CreateMastodonAppInput = {
-		client_name: 'Mastodon',
-		redirect_uris: APP_SERVER_LOGIN,
-		scopes: SCOPES,
-		website: serverURL.href
-	};
-
-	const createAppURL = new URL(serverURL.href + '/api/v1/apps');
-
-	const response = await fetch(createAppURL, {
-		method: 'POST',
-		// TODO cambiar a form data
-		headers: {
-			'Content-Type': 'application/json'
-		},
-		body: JSON.stringify(input)
-	});
-
-	if (!response.ok || response.status !== 200) {
-		return;
-	}
-
-	const body: AppResponse = await response.json();
-
-	return {
-		clientId: body.client_id,
-		clientSecret: body.client_secret,
-		serverURL: serverURL.href
 	};
 }
