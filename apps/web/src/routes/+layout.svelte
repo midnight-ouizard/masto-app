@@ -4,6 +4,6 @@
 	export let data;
 </script>
 
-<ViewTransition url={data?.url}>
+<ViewTransition url={data?.url} class="w-full">
 	<slot />
 </ViewTransition>
